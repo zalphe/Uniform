@@ -235,11 +235,7 @@ public class GUIuniform extends javax.swing.JFrame {
             //Random Number U1
             double u1 = Stream1 / m;
             //Random Number U2
-            double u2 = Stream2 / m;
-            //Interarrival Time X1
-            double x1 = a + (Stream1 - a) * u1;
-            //Interarrival Time X2
-            double x2 = ((Math.log(1 - u2)) * -beta2);
+            double u2 = Stream2 / m;            
             
             z1=Stream1;
             z2=Stream2;
