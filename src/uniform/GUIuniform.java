@@ -14,7 +14,39 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIuniform extends javax.swing.JFrame {
 
-    DecimalFormat df = new DecimalFormat("#.###");   
+    DecimalFormat df = new DecimalFormat("#.###");
+    //var simulasi 1
+    double arr1 = 0;
+    double beginservice = 0;
+    double[] departtime = new double[100];
+    double timeinqueue = 0;
+    double timeinsystem = 0;
+    double a, c, m, z1, z2;
+    int simulasi;
+
+    //var simulasi 2
+    double arr12 = 0;
+    double beginservice2 = 0;
+    double[] departtime2 = new double[100];
+    double timeinqueue2 = 0;
+    double timeinsystem2 = 0;    
+    double z22;
+    
+    //var simulasi 3
+    double arr13 = 0;
+    double beginservice3 = 0;
+    double[] departtime3 = new double[100];
+    double timeinqueue3 = 0;
+    double timeinsystem3 = 0;    
+    double z23;
+    
+    //var simulasi 4
+    double arr14 = 0;
+    double beginservice4 = 0;
+    double[] departtime4 = new double[100];
+    double timeinqueue4 = 0;
+    double timeinsystem4 = 0;    
+    double z24;
 
     /**
      * Creates new form GUI
@@ -42,17 +74,26 @@ public class GUIuniform extends javax.swing.JFrame {
         txtc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtm = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtb1 = new javax.swing.JTextField();
-        txtb2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtsim = new javax.swing.JTextField();
         buttonok = new javax.swing.JButton();
         buttonres = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabel = new javax.swing.JTable();
+        tabel1 = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabel2 = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabel3 = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabel4 = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,10 +106,6 @@ public class GUIuniform extends javax.swing.JFrame {
         jLabel4.setText("Nilai c");
 
         jLabel5.setText("Nilai m");
-
-        jLabel6.setText("Nilai B1");
-
-        jLabel7.setText("Nilai B2");
 
         jLabel8.setText("Jumlah Simulasi");
 
@@ -86,169 +123,391 @@ public class GUIuniform extends javax.swing.JFrame {
             }
         });
 
-        tabel.setModel(new javax.swing.table.DefaultTableModel(
+        tabel1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "i", "Stream 1 (Z1)", "Rundom Number", "Interarrival Time", "Stream 2 (Z2)", "Rundom Number", "Service Time"
+                "i", "S1 (Z1)", "IT (U1)", "S2 (Z2)", "ST (U2)", "CN (1)", "AT (2)", "BST (3)", "ST (4)", "DT (5)", "TIQ (6)", "TIS (7)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabel);
+        jScrollPane1.setViewportView(tabel1);
 
         jLabel9.setText("Rundom Number Uniform");
+
+        jLabel6.setText("Keterangan : S1 (Stream 1), IT (Interarrival Time), S2 (Stream 2), ST (Service Time), CN (Car Number [1]), AT (Arrival Time [2]), BST (Begin Service Time[3])");
+
+        jLabel7.setText("ST (Service Time [4]), DT (Depart Time [5]), TIQ (Time In Queue [6]), TIS (Time In Service[7])");
+
+        jLabel10.setText("Simulasi [1] loket pembelian tiket");
+
+        tabel2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "i", "IT (U1)", "S2 (Z2)", "ST (U2)", "CN (1)", "AT (2)", "BST (3)", "ST (4)", "DT (5)", "TIQ (6)", "TIS (7)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabel2);
+
+        jLabel11.setText("Simulasi [2] Masuk kapal fery");
+
+        tabel3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "i", "IT (U1)", "S2 (Z2)", "ST (U2)", "CN (1)", "AT (2)", "BST (3)", "ST (4)", "DT (5)", "TIQ (6)", "TIS (7)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabel3);
+
+        jLabel12.setText("Simulasi [3] Pick Up Time");
+
+        tabel4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "i", "IT (U1)", "S2 (Z2)", "ST (U2)", "CN (1)", "AT (2)", "BST (3)", "ST (4)", "DT (5)", "TIQ (6)", "TIS (7)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabel4);
+
+        jLabel13.setText("Simulasi [4] Turun di Dermaga");
+
+        jLabel14.setText("Simulasi Komputer Sistem Angkutan Penyeberangan Laut");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(574, 574, 574))
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtz2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtz1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(buttonres)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(txta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(53, 53, 53)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel7)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(txtb2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel6)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(txtb1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGap(37, 37, 37)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel2)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtsim, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtz2))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(65, 65, 65)
-                                                .addComponent(jLabel9)
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addComponent(buttonok)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtm, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(406, 406, 406)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtz1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtsim, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(txtm))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel4)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(buttonok)
+                                                .addComponent(buttonres)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(10, 10, 10)
+                                            .addComponent(txta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(34, 34, 34)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(284, 284, 284)
+                            .addComponent(jLabel6))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(345, 345, 345)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(540, 540, 540)
+                            .addComponent(jLabel13))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(212, 212, 212)
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12)
+                            .addGap(278, 278, 278)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))))
+                        .addGap(326, 326, 326)
+                        .addComponent(jLabel14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(jLabel7)))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(txta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtsim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonok))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonres))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtb2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonok)
-                    .addComponent(buttonres))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                            .addComponent(jLabel5)
+                            .addComponent(txtm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtsim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonokActionPerformed
-        double a = Double.parseDouble(txta.getText());
-        double c = Double.parseDouble(txtc.getText());
-        double m = Double.parseDouble(txtm.getText());
-        double beta1 = Double.parseDouble(txtb1.getText());
-        double beta2 = Double.parseDouble(txtb2.getText());
-        double z1 = Double.parseDouble(txtz1.getText());
-        double z2 = Double.parseDouble(txtz2.getText());
-        int simulasi = Integer.parseInt(txtsim.getText());
+        /*
+         double a = Double.parseDouble(txta.getText());
+         double c = Double.parseDouble(txtc.getText());
+         double m = Double.parseDouble(txtm.getText());         
+         double z1 = Double.parseDouble(txtz1.getText());
+         double z2 = Double.parseDouble(txtz2.getText());
+         int simulasi = Integer.parseInt(txtsim.getText());
+         */
+        
+        //const simulasi 1
+        z1 = 13;
+        z2 = 15;       
+        a = 21;
+        c = 3;
+        m = 16;
+        simulasi = 100;
+        departtime[0] = 0;
+        
+        //const simulasi 2
+        z23 = 14;
+               
+        //const simulasi 3
+        z23 = 13;
+        
+        //const simulasi 3
+        z24 = 13;
 
         //Create tabel model
-        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) tabel1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) tabel2.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) tabel3.getModel();
+        DefaultTableModel model4 = (DefaultTableModel) tabel4.getModel();
         for (int i = 0; i < simulasi; i++) {
+            //simulasi 1            
             //Menghitung Stream1 (Z1)
             double Stream1 = (((a * z1) + c) % m);
             //Menghitung Stream2 (Z2)
             double Stream2 = (((a * z2) + c) % m);
-            //Random Number U1
+            //Interarrival Time U1
             double u1 = Stream1 / m;
-            //Random Number U2
-            double u2 = Stream2 / m;            
-            
-            z1=Stream1;
-            z2=Stream2;
-            
-            
+            //Service Time U2
+            double u2 = Stream2 / m;
+            //Arrival Time
+            arr1 = arr1 + u1;
+
+            //Begin Service
+            if (arr1 > departtime[i]) {
+                beginservice = arr1;
+            } else if (arr1 < departtime[i]) {
+                beginservice = departtime[i];
+            }
+            //Departure Time 
+            departtime[i] = beginservice + u2;
+            //Time in Queue
+            timeinqueue = beginservice - arr1;
+            //Time in System
+            timeinsystem = departtime[i] - arr1;
+            z1 = Stream1;
+            z2 = Stream2;
+
             //Output data ke tabel
-            model.addRow(new Object[]{df.format(i + 1), df.format(Stream1), df.format(u1), df.format(x1), df.format(Stream2), df.format(u2), df.format(x2)});
+            model1.addRow(new Object[]{df.format(i + 1), df.format(Stream1), df.format(u1), df.format(Stream2), df.format(u2), df.format(i + 1), df.format(arr1), df.format(beginservice), df.format(u2), df.format(departtime[i]), df.format(timeinqueue), df.format(timeinsystem)});
+               
+            //simulasi 2
+            //Menghitung Stream21 (Z21)
+            Double Stream22 = (((a * z22) + c) % m);
+            //Interarrival Time U1
+            double u12 = departtime[i];
+            //Service Time U2
+            double u22 = Stream22 / m;
+            //Arrival Time
+            arr12 = arr12 + u12;
+
+            //Begin Service
+            if (arr12 > departtime2[i]) {
+                beginservice2 = arr12;
+            } else if (arr12 < departtime2[i]) {
+                beginservice2 = departtime2[i];
+            }
+            //Departure Time 
+            departtime2[i] = beginservice2 + u22;
+            //Time in Queue
+            timeinqueue2 = beginservice2 - arr12;
+            //Time in System
+            timeinsystem2 = departtime2[i] - arr12;
+            
+            z22 = Stream22;
+
+            //Output data ke tabel
+            model2.addRow(new Object[]{df.format(i + 1), df.format(u12), df.format(Stream22), df.format(u22), df.format(i + 1), df.format(arr12), df.format(beginservice2), df.format(u22), df.format(departtime2[i]), df.format(timeinqueue2), df.format(timeinsystem2)});
+            
+            //simulasi 3
+            //Menghitung Stream23 (Z21)
+            Double Stream23 = (((a * z23) + c) % m);
+            //Interarrival Time U13
+            double u13 = departtime2[i];
+            //Service Time U23
+            double u23 = Stream23 / m;
+            //Arrival Time3
+            arr13 = arr13 + u13;
+
+            //Begin Service3
+            if (arr13 > departtime3[i]) {
+                beginservice3 = arr13;
+            } else if (arr13 < departtime3[i]) {
+                beginservice3 = departtime3[i];
+            }
+            //Departure Time3 
+            departtime3[i] = beginservice3 + u22;
+            //Time in Queue3
+            timeinqueue3 = beginservice3 - arr13;
+            //Time in System3
+            timeinsystem3 = departtime3[i] - arr13;
+            
+            z23 = Stream23;
+
+            //Output data ke tabel3
+            model3.addRow(new Object[]{df.format(i + 1), df.format(u13), df.format(Stream23), df.format(u23), df.format(i + 1), df.format(arr13), df.format(beginservice3), df.format(u23), df.format(departtime3[i]), df.format(timeinqueue3), df.format(timeinsystem3)});
+            
+        }
+                
+        for (int i = 0; i < simulasi; i++) {             
+            //simulasi 4          
+            //Menghitung Stream24 (Z24)
+            Double Stream24 = (((a * z24) + c) % m);
+            //Interarrival Time U1
+            double u14 = departtime4[i];
+            //Service Time U2
+            double u24 = Stream24 / m;
+            //Arrival Time
+            arr14 = arr14 + u14;
+
+            //Begin Service
+            if (arr14 > departtime4[i]) {
+                beginservice4 = arr14;
+            } else if (arr14 < departtime4[i]) {
+                beginservice4 = departtime4[i];
+            }
+            //Departure Time 
+            departtime4[i] = beginservice4 + u24;
+            //Time in Queue
+            timeinqueue4 = beginservice4 - arr14;
+            //Time in System
+            timeinsystem4 = departtime4[i] - arr14;
+                       
+            z24 = Stream24;
+            //departtime4[i+1] = 
+
+            //Output data ke tabel
+            model4.addRow(new Object[]{df.format(i + 1), df.format(u14), df.format(Stream24), df.format(u24), df.format(i + 1), df.format(arr14), df.format(beginservice4), df.format(u24), df.format(departtime4[i]), df.format(timeinqueue4), df.format(timeinsystem4)});
         }
 
     }//GEN-LAST:event_buttonokActionPerformed
 
     private void buttonresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonresActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabel1.getModel();
         model.setRowCount(0);
     }//GEN-LAST:event_buttonresActionPerformed
 
@@ -292,6 +551,11 @@ public class GUIuniform extends javax.swing.JFrame {
     private javax.swing.JButton buttonok;
     private javax.swing.JButton buttonres;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -301,10 +565,14 @@ public class GUIuniform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabel;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tabel1;
+    private javax.swing.JTable tabel2;
+    private javax.swing.JTable tabel3;
+    private javax.swing.JTable tabel4;
     private javax.swing.JTextField txta;
-    private javax.swing.JTextField txtb1;
-    private javax.swing.JTextField txtb2;
     private javax.swing.JTextField txtc;
     private javax.swing.JTextField txtm;
     private javax.swing.JTextField txtsim;
