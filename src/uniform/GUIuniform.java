@@ -323,12 +323,13 @@ public class GUIuniform extends javax.swing.JFrame {
                             .addComponent(txta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonok))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonres))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonres)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)
+                                .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -392,6 +393,7 @@ public class GUIuniform extends javax.swing.JFrame {
         DefaultTableModel model2 = (DefaultTableModel) tabel2.getModel();
         DefaultTableModel model3 = (DefaultTableModel) tabel3.getModel();
         DefaultTableModel model4 = (DefaultTableModel) tabel4.getModel();
+        
         for (int i = 0; i < simulasi; i++) {
             //simulasi 1            
             //Menghitung Stream1 (Z1)
@@ -509,7 +511,7 @@ public class GUIuniform extends javax.swing.JFrame {
             timeinsystem4 = departtime4[i] - arr14;
                        
             z24 = Stream24;
-            //departtime4[i+1] = 
+            sail = departtime4[i];
 
             //Output data ke tabel
             model4.addRow(new Object[]{df.format(i + 1), df.format(u14), df.format(Stream24), df.format(u24), df.format(i + 1), df.format(arr14), df.format(beginservice4), df.format(u24), df.format(departtime4[i]), df.format(timeinqueue4), df.format(timeinsystem4)});
@@ -518,8 +520,15 @@ public class GUIuniform extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonokActionPerformed
 
     private void buttonresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonresActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tabel1.getModel();
-        model.setRowCount(0);
+        DefaultTableModel model1 = (DefaultTableModel) tabel1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) tabel2.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) tabel3.getModel();
+        DefaultTableModel model4 = (DefaultTableModel) tabel4.getModel();
+        
+        model1.setRowCount(0);
+        model2.setRowCount(0);
+        model3.setRowCount(0);
+        model4.setRowCount(0);
     }//GEN-LAST:event_buttonresActionPerformed
 
     /**
