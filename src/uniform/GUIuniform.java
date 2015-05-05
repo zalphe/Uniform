@@ -41,6 +41,7 @@ public class GUIuniform extends javax.swing.JFrame {
     double z23;
     
     //var simulasi 4
+    double sail = 0;
     double arr14 = 0;
     double beginservice4 = 0;
     double[] departtime4 = new double[100];
@@ -94,6 +95,7 @@ public class GUIuniform extends javax.swing.JFrame {
         tabel4 = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +213,8 @@ public class GUIuniform extends javax.swing.JFrame {
 
         jLabel14.setText("Simulasi Komputer Sistem Angkutan Penyeberangan Laut");
 
+        jLabel15.setText("Sail = 60");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,13 +249,15 @@ public class GUIuniform extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addComponent(jLabel5)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtm))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                     .addComponent(jLabel4)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(txtc, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel15)
+                                                        .addComponent(txtm))))
                                             .addGap(18, 18, 18)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(buttonok)
@@ -260,7 +266,7 @@ public class GUIuniform extends javax.swing.JFrame {
                                             .addComponent(jLabel3)
                                             .addGap(10, 10, 10)
                                             .addComponent(txta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(34, 34, 34)
+                                    .addGap(19, 19, 19)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +296,7 @@ public class GUIuniform extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(358, 358, 358)
                         .addComponent(jLabel7)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +335,9 @@ public class GUIuniform extends javax.swing.JFrame {
                             .addComponent(txtm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(txtsim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12))))
@@ -345,7 +353,7 @@ public class GUIuniform extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -472,13 +480,16 @@ public class GUIuniform extends javax.swing.JFrame {
             model3.addRow(new Object[]{df.format(i + 1), df.format(u13), df.format(Stream23), df.format(u23), df.format(i + 1), df.format(arr13), df.format(beginservice3), df.format(u23), df.format(departtime3[i]), df.format(timeinqueue3), df.format(timeinsystem3)});
             
         }
-                
+        
+        sail = departtime3[99] + 60;
+        
+        //simulasi 4          
         for (int i = 0; i < simulasi; i++) {             
-            //simulasi 4          
+            
             //Menghitung Stream24 (Z24)
             Double Stream24 = (((a * z24) + c) % m);
             //Interarrival Time U1
-            double u14 = departtime4[i];
+            double u14 = sail;
             //Service Time U2
             double u24 = Stream24 / m;
             //Arrival Time
@@ -556,6 +567,7 @@ public class GUIuniform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
